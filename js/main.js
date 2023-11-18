@@ -2,6 +2,28 @@
 // linguaggio restrittivo js
 'use strict'; 
 
+/*
+functions
+*/
+
+function next(){
+    elementBoxesImagesDom[currentImage].classList.remove('active');
+
+    if (currentImage === elementBoxesImagesDom.length - 1) {
+        currentImage = 0; 
+    } else {
+        currentImage++;
+    }
+    elementBoxesImagesDom[currentImage].classList.add('active');
+};
+
+
+
+
+/*
+operations
+*/
+
 //variabili
 const imagesLands = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
 
@@ -34,26 +56,7 @@ for(let i = 0; i < imagesLands.length; i++) {
 const elementBoxesImagesDom = document.querySelectorAll('.item');
 console.log(elementBoxesImagesDom);
 
-elementNext.addEventListener('click', function () {
-elementBoxesImagesDom[currentImage].classList.remove('active');
 
-    if (currentImage === elementBoxesImagesDom.length - 1) {
-        currentImage = 0; 
-    } else {
-        currentImage++;
-    }
-    elementBoxesImagesDom[currentImage].classList.add('active');
-    });
-
-elementPrev.addEventListener('click', function () {
-    elementBoxesImagesDom[currentImage].classList.remove('active');
-
-    if (currentImage === 0) {
-        currentImage = elementBoxesImagesDom.length-1; 
-    } else {
-        currentImage--;
-    }
-
-    elementBoxesImagesDom[currentImage].classList.add('active');
-});
-
+//eventi
+let autoplayCarousel = setInterval(next, 3000);
+autoplayCarousel;
